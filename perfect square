@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        int low = 0;
+        int mid;
+        int high = num/2;
+
+        while (low!=1 &&low <= high) {
+            mid = low + (high - low)/2;
+            long long sum = (long long) mid * mid; //basically in order to avoid overflow. What overflow means is that, when the data gets multiplied......Say 123456789101112, is what is to be multiplied, it goes way beyond the capabilities of int. HENCE CALLED OVERFLOW
+            
+            if (num == 1) return true;
+
+            else if(num == sum) {
+                return true;
+            }
+
+            else if (num < sum) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return false;
+
+    }
+};
