@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int dup = x;
+        int revNo = 0;
+        int sign = (x < 0) ? -1 : 1;  // This helps us store the sign of the integer
+        x = abs(x);  // Making sure that the value is the absolute value of x
+
+        while(x > 0){
+            int lastDigit = x % 10;
+            x = x / 10;
+
+            // formula for checking the ocerflow case (remember it could be asked in the placement ezam)
+            if (revNo > (INT_MAX / 10) || (revNo == INT_MAX / 10 && lastDigit > 7)) {
+                return 0;  // If we get the overflow case
+            }
+
+            revNo = (revNo * 10) + lastDigit;
+            //if (revNo == 0) return true;
+           
+        }
+        if (revNo == dup) return true;
+
+        return false;  
+    }
+        
+    
+};
