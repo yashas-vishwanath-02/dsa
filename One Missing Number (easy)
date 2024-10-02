@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int totalSum = n * (n + 1) / 2;
+        int actualSum = 0;
+        for (int num : nums) {
+            actualSum += num;
+        }
+        
+        return totalSum - actualSum;
+    }
+};
+///Here we are basically taking the TotalSum of the integers in the array, 
+and then we will calculate the actualSum of the array by adding all the numbers in the array by 
+taking a for loop, later we subtract the the actualSum form the totalSum to get the ONE AND ONE missing element.
