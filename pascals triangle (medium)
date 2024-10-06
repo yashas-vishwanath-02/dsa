@@ -1,0 +1,15 @@
+vector<vector<int>> triangle;  // To store the triangle
+
+    // Create the triangle row by row
+    for (int i = 0; i < numRows; i++) {
+        vector<int> row(i + 1, 1);  // Create a row of size i+1, initialized to 1
+
+        // Fill in the values of the row (except for the first and last element which are always 1)
+        for (int j = 1; j < i; j++) {
+            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];  // Sum of the two elements above
+        }
+
+        triangle.push_back(row);  // Add the row to the triangle
+    }
+
+    return triangle;
