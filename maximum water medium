@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+         int left = 0;                      // left pointer at the beginning
+    int right = height.size() - 1;      // right pointer at the end
+    int max_area = 0;                   // to store maximum area
+
+    while (left < right) {
+        // Calculate the area with the current left and right boundaries
+        int h = min(height[left], height[right]);   // height is the smaller of the two lines
+        int width = right - left;                  // width is the distance between the lines
+        int area = h * width;                      // area of the container
+        max_area = max(max_area, area);            // update max area if current area is larger
+
+        // Move the pointer corresponding to the shorter line
+        if (height[left] < height[right])
+            left++;
+        else
+            right--;
+    }
+
+    return max_area;
+        
+    }
+};
