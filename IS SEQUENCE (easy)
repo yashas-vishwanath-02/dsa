@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+          int i = 0, j = 0;
+        int sLen = s.size(), tLen = t.size();
+
+        while (i < sLen && j < tLen) {
+            if (s[i] == t[j]) {
+                i++;  // Move i to check the next character in s
+            }
+            j++;  // Always move j to traverse t
+        }
+
+        // If we've matched all characters in s, then it's a subsequence
+        return i == sLen;
+    }
+};
