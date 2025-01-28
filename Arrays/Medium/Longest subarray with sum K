@@ -1,0 +1,42 @@
+#include <iostream>
+#include<unordered_map>
+using namespace std;
+int longestSubArray (int arr[], int n, int k) {
+    int sum = 0;
+    int maxLength = 0;
+    //int n = arr.size();
+
+    unordered_map<int,int> mpp;
+    for(int i = 0; i < n; i++){
+        sum += arr[i];
+        if(sum == k){
+            maxLength = max(maxLength, i + 1); 
+        }
+
+        int rem = sum - k;
+        if(mpp.find(rem) != mpp.end()) {
+            int len = i - mpp[rem];
+            maxLength = max(len, maxLength);
+        }
+
+        if(mpp.find(sum) == mpp.end()) {
+            mpp[sum] = i;
+        }
+    }
+    return maxLength;
+}
+
+int main() {
+    int n;
+    int k;
+    int arr[100];
+    cin >> n;
+    cin >> k;
+   for(int i = 0;i < 100; i++) {
+    cin >> arr[i];
+   }
+   cout << longestSubArray(arr,n, k) << endl;
+
+    return 0;
+}
+
